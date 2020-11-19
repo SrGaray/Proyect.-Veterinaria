@@ -375,3 +375,129 @@ void borrarc(queue<Mascotas>consulta){
     } else {
         cout << "NO HAY EXPEDIENTES" << endl;
     }
+void borrarcyg(queue<Mascotas>cyg){
+    if(!cyg.empty()){
+        cyg.pop();
+        cout << "Se ha borrado un expendiente" << endl;
+    } else {
+        cout << "NO HAY EXPEDIENTES" << endl;
+    }
+}
+void borrarg(queue<Mascotas>grooming){
+    if(!grooming.empty()){
+        grooming.pop();
+        cout << "Se ha borrado un expediente" << endl;
+    } else {
+        cout << "NO HAY EXPEDIENTES" << endl;
+    }
+}
+//SEGUNDA PARTE DE FUNCIONES
+void recepcionista( queue<Mascotas>consulta, queue<Mascotas>cyg, queue<Mascotas>grooming,queue<Mascotas>reservacion){
+    bool estadoR=true;
+    int opcion3;
+    while (estadoR)
+    {
+        cout<<endl<<endl;
+        cout<<"-----VETERINARIA PELO LINDO-----"<<endl;
+        cout<<"1) Agendar cita"<<endl;
+        cout<<"2) Ver citas"<<endl;
+        cout<<"3) Cobrar servicios"<<endl;
+        cout<<"4) Regresar a usuarios"<<endl;
+        cout<<"Ingrese el numero de la opcion deseada: ";
+        cin>>opcion3;
+    switch (opcion3)
+        {
+        case 1: //LISTA DE PRECIOS
+        int on;
+        cout<<"Que servicio desearia: "<<endl; 
+        cout<<"1) Consulta"<<endl;
+        cout<<"2) CyG"<<endl;
+        cout<<"3) Grooming"<<endl;
+        cout<<"Escriba el numero del servicio que desearia: ";
+        cin>>on;
+        switch(on){
+            case 1: //SUB DATOS DE EXPEDIENTE
+            ingresarCITAS(consulta,cyg,grooming);
+            reservacion.push(mascota);
+            break; //Break rellenado de expediente de consultas CITAS
+            case 2:// SUB DATOS DE EXPEDIENTE
+            ingresarCITAS(consulta,cyg,grooming);
+            reservacion.push(mascota);
+            break; //Break rellenado de expediente de consulta y grooming CITAS
+            case 3://SUB DATOS DE EXPEDIENTE
+            ingresarCITAS(consulta,cyg,grooming);
+            reservacion.push(mascota);
+            break; // Break de rellenado de expediente de grooming CITAS
+            default:
+            cout<<"ERROR! El dato digitado no es una opcion.";
+            break;
+        }
+    break;
+        case 2: 
+        mostrarCitas(reservacion);  
+    break;
+        case 3: //COBRO
+        int r;
+        cout << endl;
+        cout << "Que servicio desea cobrar?" << endl;
+        cout << "1)Consulta" << endl;
+        cout << "2)Consulta y Grooming" << endl;
+        cout << "3)Grooming" << endl;
+        cout << "Seleccione el servicio a cobrar:";
+        cin >> r;
+        switch (r)
+        {
+            case 1:
+            chargeconsul(consulta);
+            break;
+            case 2:
+            chargecyg(cyg);
+            break;
+            case 3:
+            chargegroo(grooming);
+            break;
+            default:
+            cout<<"ERROR! El dato digitado no es una opcion.";
+            break;
+        }
+    case 4:
+    cout<<"Regresando al menu principal..."<<endl;
+    estadoR=false;
+    break;
+    default:
+    cout<<"ERROR! El dato digitado no es una opcion.";
+    break;
+    break;
+    }
+    }
+}
+
+void chargeconsul(queue<Mascotas> consulta){
+    int total = mascota.precio;
+    do
+    {
+        total += consulta.front().precio;
+        consulta.pop();
+        cout << "Se le ha cobrado un total de $" << total << endl;
+        
+    }
+    while(consulta.empty());
+} 
+
+void chargecyg(queue<Mascotas> cyg){
+    int Tot2 = mascota.precio;
+    do
+    {
+        Tot2 = Tot2 + cyg.front().precio;
+        cyg.pop();
+        cout << "Se le ha cobrado un total de $" << Tot2 << endl;
+        
+    }
+    while(cyg.empty());
+} 
+
+void chargegroo(queue<Mascotas>grooming){
+    int Tot3 = mascota.precio;
+    do
+    {
+        Tot3 += grooming.front().precio;
