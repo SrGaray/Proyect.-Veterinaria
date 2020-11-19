@@ -250,3 +250,128 @@ void ingresarinfo(queue<Mascotas>consulta, queue<Mascotas>cyg, queue<Mascotas>gr
         }  
     } while (v);
     cout<<"Ingrese el peso en libras de la mascota: ";
+        cout<<"Ingrese el peso en libras de la mascota: ";
+    cin>>mascota.peso;
+    //delimitacion
+    do
+    {
+        if (mascota.peso<=0)
+        {
+            cout<<"El dato ingresado no esta permitido, porfavor ingrese nuevamente el peso: ";
+            cin>>mascota.peso; 
+            v=true;
+        }
+        else
+        {
+            v=false;
+        }
+        
+    } while (v);
+    cout<<"Ingrese el nombre del encargado: ";
+    cin.ignore();
+    getline(cin,mascota.nombreencargado);
+    //delimitacion
+    do
+    {
+        if (mascota.nombreencargado.empty() || mascota.nombreencargado== " " || mascota.nombreencargado== "  ")
+        {
+            cout<<"Este dato es obligatorio, porfavor ingrese el nombre del encargado: ";
+            getline(cin,mascota.nombreencargado);
+            v=true;
+        }
+        else
+        {
+            v=false;
+            } 
+    } while (v);
+    cout<<"CONFIRME EL SERVICIO (Consulta-Grooming-CyG): "<<endl;
+    getline(cin,mascota.servicio);  
+    do
+    {
+        if (mascota.servicio!= "Consulta"&& mascota.servicio!="consulta"&& mascota.servicio!="cyg"&& mascota.servicio!= "CyG" && mascota.servicio!="Grooming" && mascota.servicio!="grooming")
+        {
+            cout<<"El dato ingresado no esta permitido, porfavor ingrese el servicio que desea: ";
+            getline(cin,mascota.servicio);
+            v=true;
+        }
+        else
+        {
+            v=false;
+        }        
+    } while (v);
+}
+
+void mostrarConsulta(queue<Mascotas>consulta){
+    if(!consulta.empty()){
+        while(!consulta.empty()){
+            cout<<"----VETERINARIA PELO LINDO---- "<<endl;
+            cout<<"----EXPEDIENTE MEDICO---- "<<endl;
+            cout <<"Raza:" <<consulta.front().animal<<endl;
+            cout<<"Nombre:"<<consulta.front().nombremascota<<endl;
+            cout<<"Genero:"<<consulta.front().genero<<endl; 
+            cout<<"Edad: "<<consulta.front().edad<<endl;
+            cout<<"Peso: "<<consulta.front().peso<<endl;
+            cout<<"Duenio: "<<consulta.front().nombreencargado<<endl;
+            cout<<"Servicio: "<<consulta.front().servicio<<endl;
+            consulta.pop();
+            
+        }
+    } 
+    else
+    {
+        cout<<"Este expediente esta vacio."<<endl;
+    }
+    
+}
+
+void mostrarCyG(queue<Mascotas>cyg){
+    if(!cyg.empty()){
+        while(!cyg.empty()){
+            cout<<"----VETERINARIA PELO LINDO---- "<<endl;
+            cout<<"----EXPEDIENTE MEDICO---- "<<endl;
+            cout<<"Raza:" << cyg.front().animal<<endl;
+            cout<<"Nombre:"<<cyg.front().nombremascota<<endl;
+            cout<<"Genero:"<<cyg.front().genero<<endl; 
+            cout<<"Edad: "<<cyg.front().edad<<endl;
+            cout<<"Peso: "<<cyg.front().peso<<endl;
+            cout<<"Duenio: "<<cyg.front().nombreencargado<<endl;
+            cout<<"Servicio: "<<cyg.front().servicio<<endl;
+            cyg.pop();
+            
+        }
+    } 
+    else
+    {
+        cout<<"Este expediente esta vacio."<<endl;
+    }
+}
+
+void mostrarGrooming(queue<Mascotas>grooming){
+    if(!grooming.empty()){
+        while(!grooming.empty()){
+            cout<<"----VETERINARIA PELO LINDO---- "<<endl;
+            cout<<"----EXPEDIENTE MEDICO---- "<<endl;
+            cout<<"Raza:" << grooming.front().animal<<endl;
+            cout<<"Nombre:"<<grooming.front().nombremascota<<endl;
+            cout<<"Genero:"<<grooming.front().genero<<endl; 
+            cout<<"Edad: "<<grooming.front().edad<<endl;
+            cout<<"Peso: "<<grooming.front().peso<<endl;
+            cout<<"Duenio: "<<grooming.front().nombreencargado<<endl;
+            cout<<"Servicio: "<<grooming.front().servicio<<endl;
+            grooming.pop();
+            
+        }
+    } 
+    else
+    {
+        cout<<"Este expediente esta vacio."<<endl;
+    }
+}
+
+void borrarc(queue<Mascotas>consulta){
+    if(!consulta.empty()){
+        consulta.pop();
+        cout << "Se ha borrado un expediente" << endl;
+    } else {
+        cout << "NO HAY EXPEDIENTES" << endl;
+    }
