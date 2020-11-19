@@ -124,3 +124,129 @@ void veterinario(queue<Mascotas>consulta, queue<Mascotas>cyg, queue<Mascotas>gro
             ingresarinfo(consulta,cyg,grooming);
             mascota.precio = 15;
             consulta.push(mascota);
+            break; //Break rellenado de expediente de consultas
+            case 2:// SUB DATOS DE EXPEDIENTE
+            ingresarinfo(consulta,cyg,grooming);
+            mascota.precio = 25;
+            cyg.push(mascota);
+            break; //Break rellenado de expediente de consulta y grooming
+            case 3://SUB DATOS DE EXPEDIENTE
+            ingresarinfo(consulta,cyg,grooming);
+            mascota.precio = 10;
+            grooming.push(mascota);
+            break; // Break de rellenado de expediente de grooming
+        }//SWITCH DE COLAS
+    break; 
+    case 2: //MOSTRAR LOS SERVICIOS 
+        int opc;
+        cout<<"Que expedientes desea ver: "<<endl;
+        cout<<"1) Consulta"<<endl;
+        cout<<"2) CyG"<<endl;
+        cout<<"3) Grooming"<<endl;
+        cout<<"Escriba el numero del servicio que desea: ";
+        cin>>opc;
+        
+    switch(opc){
+    case 1:
+        mostrarConsulta(consulta);//SUB MOSTRAR
+    break; // Break mostrar consulta    
+    case 2:
+        mostrarCyG(cyg); //SUB MOSTRAR
+    break;// Brake Mostrar cyg
+    case 3:
+        mostrarGrooming(grooming);//SUB MOSTRAR
+    break; //Brake Grooming
+        }
+    break;
+    case 3: //BORRAR UN EXPEDIENTE
+    int s;
+            cout << "Donde desea eliminar un expediente?" << endl;
+            cout << "1) Consulta" << endl;
+            cout << "2) CyG" << endl;
+            cout << "3) Grooming" << endl;
+            cout << "Ingrese el numero de cola: " << endl;
+            cin >> s;
+            switch (s)
+            {
+            case 1:
+                borrarc(consulta); //ELIMINAR 1 EXPEDIENTE
+                consulta.pop();
+                break;  
+            case 2:
+                borrarcyg(cyg); // ELIMINAR 1 EXPEDIENTE
+                cyg.pop();
+                break;
+            case 3:
+                borrarg(grooming); // ELIMINAR 1 EXPEDIENTE
+                grooming.pop();
+                break;
+            }
+        break;
+    case 4: //para regresar al menu
+            cout<<"Regresando al menu principal..."<<endl;
+            estadoVet=false;
+        break;
+    default:
+        break;
+        }
+        
+    }
+}
+
+//INGRESAR LOS DATOS DE MASCOTAS
+void ingresarinfo(queue<Mascotas>consulta, queue<Mascotas>cyg, queue<Mascotas>grooming){
+    bool v;
+    cin.ignore();
+    cout<<"Ingrese el tipo de animal: ";//no encontramos problema en el ingreso de este dato
+    getline(cin,mascota.animal);
+    cout<<"Ingrese el nombre de la mascota: ";
+    getline(cin,mascota.nombremascota);
+    //delimitacion
+    do
+    {
+        if (mascota.nombremascota.empty() || mascota.nombremascota== " " || mascota.nombremascota== "  ")
+        {
+            cout<<"Este dato es obligatorio, porfavor ingrese el nombre de la mascota: ";
+            getline(cin,mascota.nombremascota); 
+            v=true;
+        }
+        else
+        {
+            v=false;
+        }
+        
+    } while (v);
+    
+    cout<<"Ingrese el genero de la mascota (M-F): ";
+    getline(cin,mascota.genero);
+    //delimitacion
+    do
+    {
+        if (mascota.genero!= "M" && mascota.genero!= "F")
+        {
+            cout<<"El dato ingresado no esta permitido, porfavor ingrese el genero (M-Masculino, F-Femenino): ";
+            getline(cin,mascota.genero); 
+            v=true;
+        }
+        else
+        {
+            v=false;
+        }
+    } while (v);    
+    cout<<"Ingrese la edad de la mascota: ";
+    cin>>mascota.edad;
+    //delimitacion
+    do
+    {
+        if (mascota.edad<=0 && mascota.edad>160) // 160 ya que la tortuga que es la que alcanza mayor edad llega a esa edad
+        {
+            cout<<"El dato ingresado no esta permitido, porfavor ingrese nuevamente la edad: ";
+            cin>>mascota.edad;
+            v=true;
+        }
+        else
+        {
+            v=false;
+        }  
+    } while (v);
+    cout<<"Ingrese el peso en libras de la mascota: ";
