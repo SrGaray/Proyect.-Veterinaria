@@ -375,6 +375,7 @@ void borrarc(queue<Mascotas>consulta){
     } else {
         cout << "NO HAY EXPEDIENTES" << endl;
     }
+}
 void borrarcyg(queue<Mascotas>cyg){
     if(!cyg.empty()){
         cyg.pop();
@@ -501,3 +502,134 @@ void chargegroo(queue<Mascotas>grooming){
     do
     {
         Tot3 += grooming.front().precio;
+                grooming.pop();
+        cout << "Se le ha cobrado un total de $" << Tot3 << endl;
+       
+    }
+    while(grooming.empty());
+    
+} 
+
+void mostrarCitas(queue<Mascotas>reservacion){
+    queue<Mascotas> aux = reservacion;
+    if(!aux.empty()){
+        do{
+            cout<<"----VETERINARIA PELO LINDO---- "<<endl;
+            cout<<"----EXPEDIENTE MEDICO---- "<<endl;
+            cout<<"Raza:" << aux.front().animal<<endl;
+            cout<<"Nombre:"<<aux.front().nombremascota<<endl;
+            cout<<"Genero:"<<aux.front().genero<<endl; 
+            cout<<"Edad: "<<aux.front().edad<<endl;
+            cout<<"Peso: "<<aux.front().peso<<endl;
+            cout<<"Duenio: "<<aux.front().nombreencargado<<endl;
+            cout<<"Servicio: "<<aux.front().servicio<<endl;
+            cout<<"Precio: "<<aux.front().precio<<endl;
+            aux.pop();
+        }while(!aux.empty());
+    }
+}
+void ingresarCITAS(queue<Mascotas>consulta, queue<Mascotas>cyg, queue<Mascotas>grooming){
+    bool v;
+    cin.ignore();
+    cout<<"Ingrese el tipo de animal: "; //no encontramos problema en el ingreso de este dato
+    getline(cin,mascota.animal);
+    cout<<"Ingrese el nombre de la mascota: ";
+    getline(cin,mascota.nombremascota);
+    //delimitacion
+    do
+    {
+        if (mascota.nombremascota.empty() || mascota.nombremascota== " " || mascota.nombremascota== "  ")
+        {
+            cout<<"Este dato es obligatorio, porfavor ingrese el nombre de la mascota: ";
+            getline(cin,mascota.nombremascota); 
+            v=true;
+        }
+        else
+        {
+            v=false;
+        }
+        
+    } while (v);
+    
+    cout<<"Ingrese el genero de la mascota (M-F): ";
+    getline(cin,mascota.genero);
+    //delimitacion
+    do
+    {
+        if (mascota.genero!= "M" && mascota.genero!= "F")
+        {
+            cout<<"El dato ingresado no esta permitido, porfavor ingrese el genero (M-Masculino, F-Femenino): ";
+            getline(cin,mascota.genero); 
+            v=true;
+        }
+        else
+        {
+            v=false;
+        }
+    } while (v);    
+    cout<<"Ingrese la edad de la mascota: ";
+    cin>>mascota.edad;
+    //delimitacion
+    do
+    {
+        if (mascota.edad<=0 && mascota.edad>160) // hasta 160 ya que segun investigaos el animal que mas eda alcanza es la tortuga con 160
+        {
+            cout<<"El dato ingresado no esta permitido, porfavor ingrese nuevamente la edad: ";
+            cin>>mascota.edad;
+            v=true;
+        }
+        else
+        {
+            v=false;
+        }  
+    } while (v);
+    cout<<"Ingrese el peso en libras de la mascota: ";
+    cin>>mascota.peso;
+    //delimitacion
+    do
+    {
+        if (mascota.peso<=0)
+        {
+            cout<<"El dato ingresado no esta permitido, porfavor ingrese nuevamente el peso: ";
+            cin>>mascota.peso; 
+            v=true;
+        }
+        else
+        {
+            v=false;
+        }
+        
+    } while (v);
+    
+    cout<<"Ingrese el nombre del encargado: ";
+    cin.ignore();
+    getline(cin,mascota.nombreencargado);
+    //delimitacion
+    do
+    {
+        if (mascota.nombreencargado.empty() || mascota.nombreencargado== " " || mascota.nombreencargado== "  ")
+        {
+            cout<<"Este dato es obligatorio, porfavor ingrese el nombre del encargado: ";
+            getline(cin,mascota.nombreencargado);
+            v=true;
+        }
+        else
+        {
+            v=false;
+            } 
+    } while (v);
+    cout<<"CONFIRME EL SERVICIO (Consulta-Grooming-CyG): "<<endl;
+    getline(cin,mascota.servicio);  
+    do
+    {
+        if (mascota.servicio!= "Consulta"&& mascota.servicio!="consulta"&& mascota.servicio!="cyg"&& mascota.servicio!= "CyG" && mascota.servicio!="Grooming" && mascota.servicio!="grooming")
+        {
+            cout<<"El dato ingresado no esta permitido, porfavor ingrese el servicio que desea: ";
+            getline(cin,mascota.servicio);
+        }
+        else
+        {
+            v=false;
+        }        
+    } while (v);
+}
