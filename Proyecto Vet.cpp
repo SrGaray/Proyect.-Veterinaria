@@ -46,7 +46,7 @@ void chargecyg(queue<Mascotas> cyg);
 void chargegroo(queue<Mascotas> grooming);
 
 //CITAS
-void ingresarCITAS(queue<Mascotas>consulta, queue<Mascotas>cyg, queue<Mascotas>grooming);
+void ingresarCITAS(queue<Mascotas>reservacion);
 void mostrarCitas(queue<Mascotas>reservacion);
 
 //MOSTRAR NOMBRE Y PRECIO DE LOS SERVICIOS
@@ -418,15 +418,15 @@ void recepcionista( queue<Mascotas>consulta, queue<Mascotas>cyg, queue<Mascotas>
         cin>>on;
         switch(on){
             case 1: //SUB DATOS DE EXPEDIENTE
-            ingresarCITAS(consulta,cyg,grooming);
+            ingresarCITAS(reservacion);
             reservacion.push(mascota);
             break; //Break rellenado de expediente de consultas CITAS
             case 2:// SUB DATOS DE EXPEDIENTE
-            ingresarCITAS(consulta,cyg,grooming);
+            ingresarCITAS(reservacion);
             reservacion.push(mascota);
             break; //Break rellenado de expediente de consulta y grooming CITAS
             case 3://SUB DATOS DE EXPEDIENTE
-            ingresarCITAS(consulta,cyg,grooming);
+            ingresarCITAS(reservacion);
             reservacion.push(mascota);
             break; // Break de rellenado de expediente de grooming CITAS
             default:
@@ -477,7 +477,7 @@ void chargeconsul(queue<Mascotas> consulta){
     int total = mascota.precio;
     do
     {
-        total += consulta.front().precio;
+        total = total + consulta.front().precio;
         consulta.pop();
         cout << "Se le ha cobrado un total de $" << total << endl;
         
@@ -527,7 +527,7 @@ void mostrarCitas(queue<Mascotas>reservacion){
         }while(!aux.empty());
     }
 }
-void ingresarCITAS(queue<Mascotas>consulta, queue<Mascotas>cyg, queue<Mascotas>grooming){
+void ingresarCITAS(queue<Mascotas>reservacion){
     bool v;
     cin.ignore();
     cout<<"Ingrese el tipo de animal: "; //no encontramos problema en el ingreso de este dato
