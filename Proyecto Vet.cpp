@@ -523,7 +523,6 @@ void mostrarCitas(queue<Mascotas>reservacion){
             cout<<"Peso: "<<aux.front().peso<<endl;
             cout<<"Duenio: "<<aux.front().nombreencargado<<endl;
             cout<<"Servicio: "<<aux.front().servicio<<endl;
-            cout<<"Precio: "<<aux.front().precio<<endl;
             aux.pop();
         }while(!aux.empty());
     }
