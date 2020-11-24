@@ -524,6 +524,8 @@ void mostrarCitas(queue<Mascotas>reservacion){
             cout<<"Servicio: "<<aux.front().servicio<<endl;
             aux.pop();
         }while(!aux.empty());
+    } else{
+        cout<<"NO HAY CITAS REGISTRADAS"<<endl;
     }
 }
 void ingresarCITAS(queue<Mascotas>reservacion){
