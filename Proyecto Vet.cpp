@@ -250,7 +250,6 @@ void ingresarinfo(queue<Mascotas>consulta, queue<Mascotas>cyg, queue<Mascotas>gr
         }  
     } while (v);
     cout<<"Ingrese el peso en libras de la mascota: ";
-        cout<<"Ingrese el peso en libras de la mascota: ";
     cin>>mascota.peso;
     //delimitacion
     do
