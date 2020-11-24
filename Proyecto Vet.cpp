@@ -477,7 +477,7 @@ void chargeconsul(queue<Mascotas> consulta){
     int total = 15;
     do
     {
-       total = total + consulta.front().precio;
+       
         consulta.pop();
         cout << "Se le ha cobrado un total de $" << total << endl;
         
@@ -489,7 +489,7 @@ void chargecyg(queue<Mascotas> cyg){
     int Tot2 = 25;
     do
     {
-        Tot2 = Tot2 + cyg.front().precio;
+        
         cyg.pop();
         cout << "Se le ha cobrado un total de $" << Tot2 << endl;
         
@@ -501,8 +501,8 @@ void chargegroo(queue<Mascotas>grooming){
     int Tot3 = 10;
     do
     {
-        Tot3 = Tot3 + grooming.front().precio;
-                grooming.pop();
+       
+        grooming.pop();
         cout << "Se le ha cobrado un total de $" << Tot3 << endl;
        
     }
